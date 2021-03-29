@@ -1,11 +1,17 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_ddd/domain/core/errors.dart';
 import 'package:flutter_ddd/domain/core/failures.dart';
 
 @immutable
 abstract class ValueObject<T> {
   const ValueObject();
   Either<ValueFailure<T>, T> get value;
+
+  /// Throw [UnexpectedValueError] containing the [ValueFailure]
+  T getOrCrash() {
+    return value.fold((l) => throw UnexpectedValueError(l), id);
+  }
 
   bool isValid() => value.isRight();
 
