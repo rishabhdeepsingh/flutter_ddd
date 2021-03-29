@@ -22,9 +22,9 @@ class _$SignInFormEventTearOff {
     );
   }
 
-  PasswordChanged passwordChanged(String emailStr) {
+  PasswordChanged passwordChanged(String passwordStr) {
     return PasswordChanged(
-      emailStr,
+      passwordStr,
     );
   }
 
@@ -49,7 +49,7 @@ mixin _$SignInFormEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String emailStr) emailChanged,
-    required TResult Function(String emailStr) passwordChanged,
+    required TResult Function(String passwordStr) passwordChanged,
     required TResult Function() registerWithEmailPasswordPressed,
     required TResult Function() signInWithEmailPasswordPressed,
     required TResult Function() signInWithGoogle,
@@ -58,7 +58,7 @@ mixin _$SignInFormEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String emailStr)? emailChanged,
-    TResult Function(String emailStr)? passwordChanged,
+    TResult Function(String passwordStr)? passwordChanged,
     TResult Function()? registerWithEmailPasswordPressed,
     TResult Function()? signInWithEmailPasswordPressed,
     TResult Function()? signInWithGoogle,
@@ -140,23 +140,15 @@ class _$EmailChangedCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$EmailChanged with DiagnosticableTreeMixin implements EmailChanged {
+class _$EmailChanged implements EmailChanged {
   const _$EmailChanged(this.emailStr);
 
   @override
   final String emailStr;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'SignInFormEvent.emailChanged(emailStr: $emailStr)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'SignInFormEvent.emailChanged'))
-      ..add(DiagnosticsProperty('emailStr', emailStr));
   }
 
   @override
@@ -181,7 +173,7 @@ class _$EmailChanged with DiagnosticableTreeMixin implements EmailChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String emailStr) emailChanged,
-    required TResult Function(String emailStr) passwordChanged,
+    required TResult Function(String passwordStr) passwordChanged,
     required TResult Function() registerWithEmailPasswordPressed,
     required TResult Function() signInWithEmailPasswordPressed,
     required TResult Function() signInWithGoogle,
@@ -193,7 +185,7 @@ class _$EmailChanged with DiagnosticableTreeMixin implements EmailChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String emailStr)? emailChanged,
-    TResult Function(String emailStr)? passwordChanged,
+    TResult Function(String passwordStr)? passwordChanged,
     TResult Function()? registerWithEmailPasswordPressed,
     TResult Function()? signInWithEmailPasswordPressed,
     TResult Function()? signInWithGoogle,
@@ -252,7 +244,7 @@ abstract class $PasswordChangedCopyWith<$Res> {
   factory $PasswordChangedCopyWith(
           PasswordChanged value, $Res Function(PasswordChanged) then) =
       _$PasswordChangedCopyWithImpl<$Res>;
-  $Res call({String emailStr});
+  $Res call({String passwordStr});
 }
 
 /// @nodoc
@@ -268,51 +260,41 @@ class _$PasswordChangedCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? emailStr = freezed,
+    Object? passwordStr = freezed,
   }) {
     return _then(PasswordChanged(
-      emailStr == freezed
-          ? _value.emailStr
-          : emailStr // ignore: cast_nullable_to_non_nullable
+      passwordStr == freezed
+          ? _value.passwordStr
+          : passwordStr // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
 }
 
 /// @nodoc
-class _$PasswordChanged
-    with DiagnosticableTreeMixin
-    implements PasswordChanged {
-  const _$PasswordChanged(this.emailStr);
+class _$PasswordChanged implements PasswordChanged {
+  const _$PasswordChanged(this.passwordStr);
 
   @override
-  final String emailStr;
+  final String passwordStr;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'SignInFormEvent.passwordChanged(emailStr: $emailStr)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'SignInFormEvent.passwordChanged'))
-      ..add(DiagnosticsProperty('emailStr', emailStr));
+  String toString() {
+    return 'SignInFormEvent.passwordChanged(passwordStr: $passwordStr)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is PasswordChanged &&
-            (identical(other.emailStr, emailStr) ||
+            (identical(other.passwordStr, passwordStr) ||
                 const DeepCollectionEquality()
-                    .equals(other.emailStr, emailStr)));
+                    .equals(other.passwordStr, passwordStr)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(emailStr);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(passwordStr);
 
   @JsonKey(ignore: true)
   @override
@@ -323,26 +305,26 @@ class _$PasswordChanged
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String emailStr) emailChanged,
-    required TResult Function(String emailStr) passwordChanged,
+    required TResult Function(String passwordStr) passwordChanged,
     required TResult Function() registerWithEmailPasswordPressed,
     required TResult Function() signInWithEmailPasswordPressed,
     required TResult Function() signInWithGoogle,
   }) {
-    return passwordChanged(emailStr);
+    return passwordChanged(passwordStr);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String emailStr)? emailChanged,
-    TResult Function(String emailStr)? passwordChanged,
+    TResult Function(String passwordStr)? passwordChanged,
     TResult Function()? registerWithEmailPasswordPressed,
     TResult Function()? signInWithEmailPasswordPressed,
     TResult Function()? signInWithGoogle,
     required TResult orElse(),
   }) {
     if (passwordChanged != null) {
-      return passwordChanged(emailStr);
+      return passwordChanged(passwordStr);
     }
     return orElse();
   }
@@ -381,9 +363,9 @@ class _$PasswordChanged
 }
 
 abstract class PasswordChanged implements SignInFormEvent {
-  const factory PasswordChanged(String emailStr) = _$PasswordChanged;
+  const factory PasswordChanged(String passwordStr) = _$PasswordChanged;
 
-  String get emailStr => throw _privateConstructorUsedError;
+  String get passwordStr => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PasswordChangedCopyWith<PasswordChanged> get copyWith =>
       throw _privateConstructorUsedError;
@@ -413,21 +395,12 @@ class _$RegisterWithEmailPasswordPressedCopyWithImpl<$Res>
 
 /// @nodoc
 class _$RegisterWithEmailPasswordPressed
-    with DiagnosticableTreeMixin
     implements RegisterWithEmailPasswordPressed {
   const _$RegisterWithEmailPasswordPressed();
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'SignInFormEvent.registerWithEmailPasswordPressed()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty(
-          'type', 'SignInFormEvent.registerWithEmailPasswordPressed'));
   }
 
   @override
@@ -443,7 +416,7 @@ class _$RegisterWithEmailPasswordPressed
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String emailStr) emailChanged,
-    required TResult Function(String emailStr) passwordChanged,
+    required TResult Function(String passwordStr) passwordChanged,
     required TResult Function() registerWithEmailPasswordPressed,
     required TResult Function() signInWithEmailPasswordPressed,
     required TResult Function() signInWithGoogle,
@@ -455,7 +428,7 @@ class _$RegisterWithEmailPasswordPressed
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String emailStr)? emailChanged,
-    TResult Function(String emailStr)? passwordChanged,
+    TResult Function(String passwordStr)? passwordChanged,
     TResult Function()? registerWithEmailPasswordPressed,
     TResult Function()? signInWithEmailPasswordPressed,
     TResult Function()? signInWithGoogle,
@@ -529,21 +502,12 @@ class _$SignInWithEmailPasswordPressedCopyWithImpl<$Res>
 
 /// @nodoc
 class _$SignInWithEmailPasswordPressed
-    with DiagnosticableTreeMixin
     implements SignInWithEmailPasswordPressed {
   const _$SignInWithEmailPasswordPressed();
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'SignInFormEvent.signInWithEmailPasswordPressed()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty(
-          'type', 'SignInFormEvent.signInWithEmailPasswordPressed'));
   }
 
   @override
@@ -558,7 +522,7 @@ class _$SignInWithEmailPasswordPressed
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String emailStr) emailChanged,
-    required TResult Function(String emailStr) passwordChanged,
+    required TResult Function(String passwordStr) passwordChanged,
     required TResult Function() registerWithEmailPasswordPressed,
     required TResult Function() signInWithEmailPasswordPressed,
     required TResult Function() signInWithGoogle,
@@ -570,7 +534,7 @@ class _$SignInWithEmailPasswordPressed
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String emailStr)? emailChanged,
-    TResult Function(String emailStr)? passwordChanged,
+    TResult Function(String passwordStr)? passwordChanged,
     TResult Function()? registerWithEmailPasswordPressed,
     TResult Function()? signInWithEmailPasswordPressed,
     TResult Function()? signInWithGoogle,
@@ -640,21 +604,12 @@ class _$SignInWithGoogleCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$SignInWithGoogle
-    with DiagnosticableTreeMixin
-    implements SignInWithGoogle {
+class _$SignInWithGoogle implements SignInWithGoogle {
   const _$SignInWithGoogle();
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'SignInFormEvent.signInWithGoogle()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'SignInFormEvent.signInWithGoogle'));
   }
 
   @override
@@ -669,7 +624,7 @@ class _$SignInWithGoogle
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String emailStr) emailChanged,
-    required TResult Function(String emailStr) passwordChanged,
+    required TResult Function(String passwordStr) passwordChanged,
     required TResult Function() registerWithEmailPasswordPressed,
     required TResult Function() signInWithEmailPasswordPressed,
     required TResult Function() signInWithGoogle,
@@ -681,7 +636,7 @@ class _$SignInWithGoogle
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String emailStr)? emailChanged,
-    TResult Function(String emailStr)? passwordChanged,
+    TResult Function(String passwordStr)? passwordChanged,
     TResult Function()? registerWithEmailPasswordPressed,
     TResult Function()? signInWithEmailPasswordPressed,
     TResult Function()? signInWithGoogle,
@@ -739,13 +694,13 @@ class _$SignInFormStateTearOff {
       required Password password,
       required bool isSubmitting,
       required bool showErrorMessages,
-      required Option<Either<AuthFailure, Unit>> authFailureOrSuccess}) {
+      required Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption}) {
     return _SignInFormState(
       emailAddress: emailAddress,
       password: password,
       isSubmitting: isSubmitting,
       showErrorMessages: showErrorMessages,
-      authFailureOrSuccess: authFailureOrSuccess,
+      authFailureOrSuccessOption: authFailureOrSuccessOption,
     );
   }
 }
@@ -759,7 +714,7 @@ mixin _$SignInFormState {
   Password get password => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
   bool get showErrorMessages => throw _privateConstructorUsedError;
-  Option<Either<AuthFailure, Unit>> get authFailureOrSuccess =>
+  Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -777,7 +732,7 @@ abstract class $SignInFormStateCopyWith<$Res> {
       Password password,
       bool isSubmitting,
       bool showErrorMessages,
-      Option<Either<AuthFailure, Unit>> authFailureOrSuccess});
+      Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption});
 }
 
 /// @nodoc
@@ -795,7 +750,7 @@ class _$SignInFormStateCopyWithImpl<$Res>
     Object? password = freezed,
     Object? isSubmitting = freezed,
     Object? showErrorMessages = freezed,
-    Object? authFailureOrSuccess = freezed,
+    Object? authFailureOrSuccessOption = freezed,
   }) {
     return _then(_value.copyWith(
       emailAddress: emailAddress == freezed
@@ -814,9 +769,9 @@ class _$SignInFormStateCopyWithImpl<$Res>
           ? _value.showErrorMessages
           : showErrorMessages // ignore: cast_nullable_to_non_nullable
               as bool,
-      authFailureOrSuccess: authFailureOrSuccess == freezed
-          ? _value.authFailureOrSuccess
-          : authFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+      authFailureOrSuccessOption: authFailureOrSuccessOption == freezed
+          ? _value.authFailureOrSuccessOption
+          : authFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<AuthFailure, Unit>>,
     ));
   }
@@ -834,7 +789,7 @@ abstract class _$SignInFormStateCopyWith<$Res>
       Password password,
       bool isSubmitting,
       bool showErrorMessages,
-      Option<Either<AuthFailure, Unit>> authFailureOrSuccess});
+      Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption});
 }
 
 /// @nodoc
@@ -854,7 +809,7 @@ class __$SignInFormStateCopyWithImpl<$Res>
     Object? password = freezed,
     Object? isSubmitting = freezed,
     Object? showErrorMessages = freezed,
-    Object? authFailureOrSuccess = freezed,
+    Object? authFailureOrSuccessOption = freezed,
   }) {
     return _then(_SignInFormState(
       emailAddress: emailAddress == freezed
@@ -873,24 +828,22 @@ class __$SignInFormStateCopyWithImpl<$Res>
           ? _value.showErrorMessages
           : showErrorMessages // ignore: cast_nullable_to_non_nullable
               as bool,
-      authFailureOrSuccess: authFailureOrSuccess == freezed
-          ? _value.authFailureOrSuccess
-          : authFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+      authFailureOrSuccessOption: authFailureOrSuccessOption == freezed
+          ? _value.authFailureOrSuccessOption
+          : authFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<AuthFailure, Unit>>,
     ));
   }
 }
 
 /// @nodoc
-class _$_SignInFormState
-    with DiagnosticableTreeMixin
-    implements _SignInFormState {
+class _$_SignInFormState implements _SignInFormState {
   const _$_SignInFormState(
       {required this.emailAddress,
       required this.password,
       required this.isSubmitting,
       required this.showErrorMessages,
-      required this.authFailureOrSuccess});
+      required this.authFailureOrSuccessOption});
 
   @override
   final EmailAddress emailAddress;
@@ -901,23 +854,11 @@ class _$_SignInFormState
   @override
   final bool showErrorMessages;
   @override
-  final Option<Either<AuthFailure, Unit>> authFailureOrSuccess;
+  final Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'SignInFormState(emailAddress: $emailAddress, password: $password, isSubmitting: $isSubmitting, showErrorMessages: $showErrorMessages, authFailureOrSuccess: $authFailureOrSuccess)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'SignInFormState'))
-      ..add(DiagnosticsProperty('emailAddress', emailAddress))
-      ..add(DiagnosticsProperty('password', password))
-      ..add(DiagnosticsProperty('isSubmitting', isSubmitting))
-      ..add(DiagnosticsProperty('showErrorMessages', showErrorMessages))
-      ..add(DiagnosticsProperty('authFailureOrSuccess', authFailureOrSuccess));
+  String toString() {
+    return 'SignInFormState(emailAddress: $emailAddress, password: $password, isSubmitting: $isSubmitting, showErrorMessages: $showErrorMessages, authFailureOrSuccessOption: $authFailureOrSuccessOption)';
   }
 
   @override
@@ -936,9 +877,11 @@ class _$_SignInFormState
             (identical(other.showErrorMessages, showErrorMessages) ||
                 const DeepCollectionEquality()
                     .equals(other.showErrorMessages, showErrorMessages)) &&
-            (identical(other.authFailureOrSuccess, authFailureOrSuccess) ||
-                const DeepCollectionEquality()
-                    .equals(other.authFailureOrSuccess, authFailureOrSuccess)));
+            (identical(other.authFailureOrSuccessOption,
+                    authFailureOrSuccessOption) ||
+                const DeepCollectionEquality().equals(
+                    other.authFailureOrSuccessOption,
+                    authFailureOrSuccessOption)));
   }
 
   @override
@@ -948,7 +891,7 @@ class _$_SignInFormState
       const DeepCollectionEquality().hash(password) ^
       const DeepCollectionEquality().hash(isSubmitting) ^
       const DeepCollectionEquality().hash(showErrorMessages) ^
-      const DeepCollectionEquality().hash(authFailureOrSuccess);
+      const DeepCollectionEquality().hash(authFailureOrSuccessOption);
 
   @JsonKey(ignore: true)
   @override
@@ -958,12 +901,12 @@ class _$_SignInFormState
 
 abstract class _SignInFormState implements SignInFormState {
   const factory _SignInFormState(
-          {required EmailAddress emailAddress,
-          required Password password,
-          required bool isSubmitting,
-          required bool showErrorMessages,
-          required Option<Either<AuthFailure, Unit>> authFailureOrSuccess}) =
-      _$_SignInFormState;
+      {required EmailAddress emailAddress,
+      required Password password,
+      required bool isSubmitting,
+      required bool showErrorMessages,
+      required Option<Either<AuthFailure, Unit>>
+          authFailureOrSuccessOption}) = _$_SignInFormState;
 
   @override
   EmailAddress get emailAddress => throw _privateConstructorUsedError;
@@ -974,7 +917,7 @@ abstract class _SignInFormState implements SignInFormState {
   @override
   bool get showErrorMessages => throw _privateConstructorUsedError;
   @override
-  Option<Either<AuthFailure, Unit>> get authFailureOrSuccess =>
+  Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
