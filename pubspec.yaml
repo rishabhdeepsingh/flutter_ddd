@@ -29,13 +29,17 @@ dependencies:
   firebase_core: ^1.0.2
   flutter_bloc: ^7.0.0
   freezed_annotation: ^0.14.1
+  get_it: ^6.0.0
   google_sign_in: ^5.0.1
+  injectable: ^1.2.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   build_runner: null
   freezed: ^0.14.1
+  injectable_generator: ^1.2.2
+  lint: ^1.5.3
 
 # The following section is specific to Flutter.
 flutter:
