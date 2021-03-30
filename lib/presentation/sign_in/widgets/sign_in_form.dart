@@ -31,6 +31,7 @@ class SignInForm extends StatelessWidget {
         return Form(
           autovalidateMode: AutovalidateMode.onUserInteraction,
           child: ListView(
+            padding: const EdgeInsets.all(8),
             children: [
               const Text(
                 "📝",
@@ -70,24 +71,26 @@ class SignInForm extends StatelessWidget {
                     .read<SignInFormBloc>()
                     .add(SignInFormEvent.passwordChanged(value)),
                 validator: (_) =>
-                    context.watch<SignInFormBloc>().state.password.value.fold(
-                        (l) => l.maybeMap(
-                              shortPassword: (_) => "Short Password",
-                              orElse: () => null,
-                            ),
-                        (_) => null),
+                    context.read<SignInFormBloc>().state.password.value.fold(
+                          (f) => f.maybeMap(
+                            shortPassword: (_) => 'Short Password',
+                            orElse: () => null,
+                          ),
+                          (_) => null,
+                        ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
-                      child: TextButton(
-                    onPressed: () {
-                      context.read<SignInFormBloc>().add(const SignInFormEvent
-                          .signInWithEmailPasswordPressed());
-                    },
-                    child: const Text("SIGN IN"),
-                  )),
+                    child: TextButton(
+                      onPressed: () {
+                        context.read<SignInFormBloc>().add(const SignInFormEvent
+                            .signInWithEmailPasswordPressed());
+                      },
+                      child: const Text("SIGN IN"),
+                    ),
+                  ),
                   Expanded(
                       child: TextButton(
                     onPressed: () {
@@ -111,7 +114,11 @@ class SignInForm extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-              )
+              ),
+              if (state.isSubmitting) ...[
+                const SizedBox(height: 8),
+                const CircularProgressIndicator()
+              ]
             ],
           ),
         );
