@@ -1,5 +1,7 @@
 import 'package:flutter_ddd/domain/core/failures.dart';
 
+class NoteAuthenticatedError extends Error {}
+
 class UnexpectedValueError extends Error {
   final ValueFailure valueFailure;
 
