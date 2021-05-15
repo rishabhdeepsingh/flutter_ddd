@@ -67,20 +67,54 @@ class NoteRepository implements INoteRepository {
   }
 
   @override
-  Stream<Either<NoteFailure, Unit>> create() {
-    // TODO: implement create
-    throw UnimplementedError();
+  Future<Either<NoteFailure, Unit>> create(Note note) async {
+    try {
+      final userDoc = await _firestore.userDocument();
+      final noteDto = NoteDto.fromDomain(note);
+      await userDoc.noteCollection.doc(noteDto.id).set(noteDto.toJson());
+      return right(unit);
+    } on PlatformException catch (e) {
+      if (e.message!.contains("PERMISSION_DENIED")) {
+        return left(const NoteFailure.insufficientPermissions());
+      } else {
+        return left(const NoteFailure.unexpected());
+      }
+    }
   }
 
   @override
-  Stream<Either<NoteFailure, Unit>> delete() {
-    // TODO: implement delete
-    throw UnimplementedError();
+  Future<Either<NoteFailure, Unit>> delete(Note note) async {
+    try {
+      final userDoc = await _firestore.userDocument();
+      final noteId = note.id.getOrCrash();
+      await userDoc.noteCollection.doc(noteId).delete();
+      return right(unit);
+    } on PlatformException catch (e) {
+      if (e.message!.contains("PERMISSION_DENIED")) {
+        return left(const NoteFailure.insufficientPermissions());
+      } else if (e.message!.contains("NOT_FOUND")) {
+        return left(const NoteFailure.unableToUpdate());
+      } else {
+        return left(const NoteFailure.unexpected());
+      }
+    }
   }
 
   @override
-  Stream<Either<NoteFailure, Unit>> update() {
-    // TODO: implement update
-    throw UnimplementedError();
+  Future<Either<NoteFailure, Unit>> update(Note note) async {
+    try {
+      final userDoc = await _firestore.userDocument();
+      final noteDto = NoteDto.fromDomain(note);
+      await userDoc.noteCollection.doc(noteDto.id).update(noteDto.toJson());
+      return right(unit);
+    } on PlatformException catch (e) {
+      if (e.message!.contains("PERMISSION_DENIED")) {
+        return left(const NoteFailure.insufficientPermissions());
+      } else if (e.message!.contains("NOT_FOUND")) {
+        return left(const NoteFailure.unableToUpdate());
+      } else {
+        return left(const NoteFailure.unexpected());
+      }
+    }
   }
 }

@@ -6,7 +6,8 @@ import 'package:kt_dart/collection.dart';
 abstract class INoteRepository {
   Stream<Either<NoteFailure, KtList<Note>>> watchAll();
   Stream<Either<NoteFailure, KtList<Note>>> watchUncomplete();
-  Stream<Either<NoteFailure, Unit>> create();
-  Stream<Either<NoteFailure, Unit>> update();
-  Stream<Either<NoteFailure, Unit>> delete();
+
+  Future<Either<NoteFailure, Unit>> create(Note note);
+  Future<Either<NoteFailure, Unit>> update(Note note);
+  Future<Either<NoteFailure, Unit>> delete(Note note);
 }
