@@ -6,6 +6,7 @@ import 'package:flutter_ddd/domain/notes/note.dart';
 import 'package:flutter_ddd/domain/notes/todo_item.dart';
 import 'package:flutter_ddd/domain/notes/value_objects.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:kt_dart/kt.dart';
 
 part 'note_dto.freezed.dart';
 part 'note_dto.g.dart';
@@ -29,18 +30,19 @@ abstract class NoteDto with _$NoteDto {
       color: note.color.getOrCrash().value,
       todos: note.todos
           .getOrCrash()
-          .map((TodoItem todoItem) => TodoItemDto.fromDomain(todoItem))
-          .asList(),
+          .asList()
+          .map((e) => TodoItemDto.fromDomain(e))
+          .toList(),
       serverTimeStamp: FieldValue.serverTimestamp(),
     );
   }
 
   Note toDomain() {
     return Note(
-      id: UniqueId.fromUniqueString(id),
+      id: UniqueId.fromUniqueString(id!),
       body: NoteBody(body),
       color: NoteColor(Color(color)),
-      todos: List3(todos.map((dto) => dto.toDomain()).toImmutableList()),
+      todos: List3(todos.map((e) => e.toDomain()).toList().toImmutableList()),
     );
   }
 

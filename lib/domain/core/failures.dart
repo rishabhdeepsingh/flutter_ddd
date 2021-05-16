@@ -20,7 +20,7 @@ class ValueFailure<T> with _$ValueFailure<T> {
   const factory ValueFailure.listTooLong({
     required T failedValue,
     required int max,
-  }) = listTooLong<T>;
+  }) = ListTooLong<T>;
 
   const factory ValueFailure.invalidEmail({
     required T failedValue,

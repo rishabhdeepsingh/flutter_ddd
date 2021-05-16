@@ -1,7 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_ddd/application/auth/auth_bloc.dart';
 import 'package:flutter_ddd/application/auth/sign_in_form/sign_in_form_bloc.dart';
+import 'package:flutter_ddd/presentation/routes/router.gr.dart';
 
 class SignInForm extends StatelessWidget {
   const SignInForm({Key? key}) : super(key: key);
@@ -13,16 +16,21 @@ class SignInForm extends StatelessWidget {
         state.authFailureOrSuccessOption.fold(
           () {},
           (either) => either.fold(
-            (failure) => FlushbarHelper.createError(
-              message: failure.map(
-                cancelledByUser: (_) => "Cancelled",
-                serverError: (_) => "Server Error",
-                emailAlreadyInUse: (_) => "Email Already in Use",
-                invalidEmailPasswordCombination: (_) => "Invalid credentials",
-              ),
-            ).show(context),
-            (r) => {
-              // TODO: Navigate
+            (failure) {
+              FlushbarHelper.createError(
+                message: failure.map(
+                  cancelledByUser: (_) => "Cancelled",
+                  serverError: (_) => "Server Error",
+                  emailAlreadyInUse: (_) => "Email Already in Use",
+                  invalidEmailPasswordCombination: (_) => "Invalid credentials",
+                ),
+              ).show(context);
+            },
+            (_) {
+              context.router.push(const NotesOverviewPageRoute());
+              context
+                  .read<AuthBloc>()
+                  .add(const AuthEvent.authCheckRequested());
             },
           ),
         );

@@ -26,6 +26,8 @@ class AppWidget extends StatelessWidget {
           inputDecorationTheme: InputDecorationTheme(
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
           ),
+          floatingActionButtonTheme:
+              FloatingActionButtonThemeData(backgroundColor: Colors.blue[900]),
         ),
       ),
     );
