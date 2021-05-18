@@ -31,14 +31,15 @@ dependencies:
   firebase_core: ^1.0.2
   flushbar: ^1.10.4
   flutter_bloc: ^7.0.0
+  flutter_hooks: ^0.17.0
   freezed_annotation: ^0.14.1
   get_it: ^6.0.0
   google_sign_in: ^5.0.1
   injectable: ^1.2.2
   json_annotation: ^4.0.1
   kt_dart: ^0.9.0
-  uuid: ^3.0.3
   rxdart: ^0.27.0
+  uuid: ^3.0.3
 
 dev_dependencies:
   flutter_test:
