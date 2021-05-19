@@ -125,6 +125,7 @@ class __$TodoItemPrimitiveCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_TodoItemPrimitive extends _TodoItemPrimitive {
   const _$_TodoItemPrimitive(
       {required this.id, required this.name, required this.done})

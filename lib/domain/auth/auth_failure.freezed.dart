@@ -112,6 +112,7 @@ class _$CancelledByUserCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$CancelledByUser implements CancelledByUser {
   const _$CancelledByUser();
 
@@ -206,6 +207,7 @@ class _$ServerErrorCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$ServerError implements ServerError {
   const _$ServerError();
 
@@ -301,6 +303,7 @@ class _$EmailAlreadyInUseCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$EmailAlreadyInUse implements EmailAlreadyInUse {
   const _$EmailAlreadyInUse();
 
@@ -399,6 +402,7 @@ class _$InvalidEmailPasswordCombinationCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$InvalidEmailPasswordCombination
     implements InvalidEmailPasswordCombination {
   const _$InvalidEmailPasswordCombination();

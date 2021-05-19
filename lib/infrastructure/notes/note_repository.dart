@@ -26,7 +26,9 @@ class NoteRepository implements INoteRepository {
         .snapshots()
         .map((snapshot) => right<NoteFailure, KtList<Note>>(
               snapshot.docs
-                  .map((doc) => NoteDto.fromFirestore(doc).toDomain())
+                  .map((doc) => NoteDto.fromFirestore(
+                          doc as QueryDocumentSnapshot<Map<String, dynamic>>)
+                      .toDomain())
                   .toImmutableList(),
             ))
         .onErrorReturnWith((e, _) {
@@ -49,7 +51,9 @@ class NoteRepository implements INoteRepository {
         .snapshots()
         .map(
           (snapshot) => snapshot.docs
-              .map((doc) => NoteDto.fromFirestore(doc).toDomain())
+              .map((doc) => NoteDto.fromFirestore(
+                      doc as QueryDocumentSnapshot<Map<String, dynamic>>)
+                  .toDomain())
               .toImmutableList(),
         )
         .map((notes) => right<NoteFailure, KtList<Note>>(

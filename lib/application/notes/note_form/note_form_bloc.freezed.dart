@@ -139,6 +139,7 @@ class __$InitializedCopyWithImpl<$Res> extends _$NoteFormEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Initialized implements _Initialized {
   const _$_Initialized(this.initialNoteOption);
 
@@ -267,6 +268,7 @@ class __$BodyChangedCopyWithImpl<$Res> extends _$NoteFormEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_BodyChanged implements _BodyChanged {
   const _$_BodyChanged(this.bodyStr);
 
@@ -394,6 +396,7 @@ class __$ColorChangedCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_ColorChanged implements _ColorChanged {
   const _$_ColorChanged(this.color);
 
@@ -521,6 +524,7 @@ class __$TodosChangedCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_TodosChanged implements _TodosChanged {
   const _$_TodosChanged(this.todos);
 
@@ -633,6 +637,7 @@ class __$SavedCopyWithImpl<$Res> extends _$NoteFormEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Saved implements _Saved {
   const _$_Saved();
 
@@ -874,6 +879,7 @@ class __$NoteFormStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_NoteFormState implements _NoteFormState {
   const _$_NoteFormState(
       {required this.note,

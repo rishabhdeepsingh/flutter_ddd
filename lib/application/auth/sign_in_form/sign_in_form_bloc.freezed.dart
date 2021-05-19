@@ -140,6 +140,7 @@ class _$EmailChangedCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$EmailChanged implements EmailChanged {
   const _$EmailChanged(this.emailStr);
 
@@ -272,6 +273,7 @@ class _$PasswordChangedCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$PasswordChanged implements PasswordChanged {
   const _$PasswordChanged(this.passwordStr);
 
@@ -394,6 +396,7 @@ class _$RegisterWithEmailPasswordPressedCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$RegisterWithEmailPasswordPressed
     implements RegisterWithEmailPasswordPressed {
   const _$RegisterWithEmailPasswordPressed();
@@ -501,6 +504,7 @@ class _$SignInWithEmailPasswordPressedCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$SignInWithEmailPasswordPressed
     implements SignInWithEmailPasswordPressed {
   const _$SignInWithEmailPasswordPressed();
@@ -604,6 +608,7 @@ class _$SignInWithGoogleCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$SignInWithGoogle implements SignInWithGoogle {
   const _$SignInWithGoogle();
 
@@ -837,6 +842,7 @@ class __$SignInFormStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_SignInFormState implements _SignInFormState {
   const _$_SignInFormState(
       {required this.emailAddress,

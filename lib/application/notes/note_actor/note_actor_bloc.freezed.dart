@@ -132,6 +132,7 @@ class __$DeletedCopyWithImpl<$Res> extends _$NoteActorEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Deleted implements _Deleted {
   const _$_Deleted(this.note);
 
@@ -310,6 +311,7 @@ class __$InitialCopyWithImpl<$Res> extends _$NoteActorStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Initial implements _Initial {
   const _$_Initial();
 
@@ -403,6 +405,7 @@ class __$ActionInProgressCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_ActionInProgress implements _ActionInProgress {
   const _$_ActionInProgress();
 
@@ -518,6 +521,7 @@ class __$DeleteFailureCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_DeleteFailure implements _DeleteFailure {
   const _$_DeleteFailure(this.noteFailure);
 
@@ -629,6 +633,7 @@ class __$DeleteSuccessCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_DeleteSuccess implements _DeleteSuccess {
   const _$_DeleteSuccess();
 

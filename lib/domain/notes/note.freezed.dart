@@ -135,6 +135,7 @@ class __$NoteCopyWithImpl<$Res> extends _$NoteCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Note extends _Note {
   const _$_Note(
       {required this.id,

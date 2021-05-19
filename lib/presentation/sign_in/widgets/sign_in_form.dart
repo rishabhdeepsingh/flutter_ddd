@@ -27,7 +27,7 @@ class SignInForm extends StatelessWidget {
               ).show(context);
             },
             (_) {
-              context.router.push(const NotesOverviewPageRoute());
+              context.router.replace(const NotesOverviewPageRoute());
               context
                   .read<AuthBloc>()
                   .add(const AuthEvent.authCheckRequested());

@@ -166,9 +166,8 @@ class __$NoteDtoCopyWithImpl<$Res> extends _$NoteDtoCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_NoteDto extends _NoteDto {
   const _$_NoteDto(
       {@JsonKey(ignore: true) this.id,
@@ -385,9 +384,8 @@ class __$TodoItemDtoCopyWithImpl<$Res> extends _$TodoItemDtoCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_TodoItemDto extends _TodoItemDto {
   const _$_TodoItemDto(
       {required this.id, required this.name, required this.done})

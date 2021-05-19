@@ -3,11 +3,9 @@ import 'package:flutter_ddd/presentation/notes/notes_overview/notes_overview_pag
 import 'package:flutter_ddd/presentation/sign_in/sign_in_page.dart';
 import 'package:flutter_ddd/presentation/splash/splash_page.dart';
 
-@MaterialAutoRouter(
-    generateNavigationHelperExtension: true,
-    routes: <AutoRoute>[
-      MaterialRoute(page: SplashPage, initial: true),
-      MaterialRoute(page: SignInPage),
-      MaterialRoute(page: NotesOverviewPage),
-    ])
+@MaterialAutoRouter(routes: <AutoRoute>[
+  MaterialRoute(page: SplashPage, initial: true),
+  MaterialRoute(page: SignInPage),
+  MaterialRoute(page: NotesOverviewPage),
+])
 class $Router {}

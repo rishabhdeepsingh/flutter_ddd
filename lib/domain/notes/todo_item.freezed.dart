@@ -119,6 +119,7 @@ class __$TodoItemCopyWithImpl<$Res> extends _$TodoItemCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_TodoItem extends _TodoItem {
   const _$_TodoItem({required this.id, required this.name, required this.done})
       : super._();

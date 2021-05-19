@@ -109,6 +109,7 @@ class __$WatchAllStartedCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_WatchAllStarted implements _WatchAllStarted {
   const _$_WatchAllStarted();
 
@@ -202,6 +203,7 @@ class __$WatchUncompletedStartedCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_WatchUncompletedStarted implements _WatchUncompletedStarted {
   const _$_WatchUncompletedStarted();
 
@@ -307,6 +309,7 @@ class __$NotesReceivedCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_NotesReceived implements _NotesReceived {
   const _$_NotesReceived(this.failureOrNotes);
 
@@ -500,6 +503,7 @@ class __$InitialCopyWithImpl<$Res> extends _$NoteWatcherStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Initial implements _Initial {
   const _$_Initial();
 
@@ -593,6 +597,7 @@ class __$LoadInProgressCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_LoadInProgress implements _LoadInProgress {
   const _$_LoadInProgress();
 
@@ -699,6 +704,7 @@ class __$LoadSuccessCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_LoadSuccess implements _LoadSuccess {
   const _$_LoadSuccess(this.notes);
 
@@ -831,6 +837,7 @@ class __$LoadFailureCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_LoadFailure implements _LoadFailure {
   const _$_LoadFailure(this.noteFailure);
 
