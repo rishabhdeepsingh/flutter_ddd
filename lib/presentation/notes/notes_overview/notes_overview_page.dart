@@ -9,6 +9,7 @@ import 'package:flutter_ddd/injection.dart';
 import 'package:flutter_ddd/presentation/notes/notes_overview/widgets/notes_overview_body.dart';
 import 'package:flutter_ddd/presentation/notes/notes_overview/widgets/uncompleted_switch.dart';
 import 'package:flutter_ddd/presentation/routes/router.gr.dart';
+import 'package:auto_route/auto_route.dart';
 
 class NotesOverviewPage extends StatelessWidget {
   const NotesOverviewPage({Key? key}) : super(key: key);
@@ -63,7 +64,7 @@ class NotesOverviewPage extends StatelessWidget {
           ),
           floatingActionButton: FloatingActionButton(
             onPressed: () {
-              // TODO: Navigate to NoteFormPage
+              context.router.push(NoteFormPageRoute());
             },
             child: const Icon(Icons.add),
           ),
