@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,7 +10,6 @@ import 'package:flutter_ddd/injection.dart';
 import 'package:flutter_ddd/presentation/notes/notes_overview/widgets/notes_overview_body.dart';
 import 'package:flutter_ddd/presentation/notes/notes_overview/widgets/uncompleted_switch.dart';
 import 'package:flutter_ddd/presentation/routes/router.gr.dart';
-import 'package:auto_route/auto_route.dart';
 
 class NotesOverviewPage extends StatelessWidget {
   const NotesOverviewPage({Key? key}) : super(key: key);

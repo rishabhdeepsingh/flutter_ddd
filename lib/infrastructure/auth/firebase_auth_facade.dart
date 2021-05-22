@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart' hide User;
-import 'package:flutter/services.dart';
 import 'package:flutter_ddd/domain/auth/auth_failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_ddd/domain/auth/i_auth_facade.dart';
@@ -29,7 +28,7 @@ class FirebaseAuthFacade implements IAuthFacade {
         password: passwordStr,
       );
       return right(unit);
-    } on PlatformException catch (e) {
+    } on FirebaseAuthException catch (e) {
       if (e.code == 'email-already-in-use') {
         return left(const AuthFailure.emailAlreadyInUse());
       } else {
@@ -51,7 +50,7 @@ class FirebaseAuthFacade implements IAuthFacade {
         password: passwordStr,
       );
       return right(unit);
-    } on PlatformException catch (e) {
+    } on FirebaseAuthException catch (e) {
       if (e.code == 'wrong-password' || e.code == "user-not-found") {
         return left(const AuthFailure.invalidEmailPasswordCombination());
       } else {
@@ -74,7 +73,7 @@ class FirebaseAuthFacade implements IAuthFacade {
       );
       await _firebaseAuth.signInWithCredential(authCredentials);
       return right(unit);
-    } on PlatformException catch (_) {
+    } on FirebaseAuthException catch (_) {
       return left(const AuthFailure.serverError());
     }
   }

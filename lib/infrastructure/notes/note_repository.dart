@@ -32,7 +32,7 @@ class NoteRepository implements INoteRepository {
                   .toImmutableList(),
             ))
         .onErrorReturnWith((e, _) {
-      if (e is PlatformException && e.message!.contains("PERMISSION_DENIED")) {
+      if (e is FirebaseException && e.message!.contains("PERMISSION_DENIED")) {
         return left(const NoteFailure.insufficientPermissions());
       } else {
         // LOG.e("Unexpected");
@@ -61,7 +61,7 @@ class NoteRepository implements INoteRepository {
                   note.todos.getOrCrash().any((todoItem) => !todoItem.done)),
             ))
         .onErrorReturnWith((e, _) {
-      if (e is PlatformException && e.message!.contains("PERMISSION_DENIED")) {
+      if (e is FirebaseException && e.message!.contains("PERMISSION_DENIED")) {
         return left(const NoteFailure.insufficientPermissions());
       } else {
         // LOG.e("Unexpected");
@@ -77,7 +77,7 @@ class NoteRepository implements INoteRepository {
       final noteDto = NoteDto.fromDomain(note);
       await userDoc.noteCollection.doc(noteDto.id).set(noteDto.toJson());
       return right(unit);
-    } on PlatformException catch (e) {
+    } on FirebaseException catch (e) {
       if (e.message!.contains("PERMISSION_DENIED")) {
         return left(const NoteFailure.insufficientPermissions());
       } else {
@@ -93,7 +93,7 @@ class NoteRepository implements INoteRepository {
       final noteId = note.id.getOrCrash();
       await userDoc.noteCollection.doc(noteId).delete();
       return right(unit);
-    } on PlatformException catch (e) {
+    } on FirebaseException catch (e) {
       if (e.message!.contains("PERMISSION_DENIED")) {
         return left(const NoteFailure.insufficientPermissions());
       } else if (e.message!.contains("NOT_FOUND")) {
@@ -111,7 +111,7 @@ class NoteRepository implements INoteRepository {
       final noteDto = NoteDto.fromDomain(note);
       await userDoc.noteCollection.doc(noteDto.id).update(noteDto.toJson());
       return right(unit);
-    } on PlatformException catch (e) {
+    } on FirebaseException catch (e) {
       if (e.message!.contains("PERMISSION_DENIED")) {
         return left(const NoteFailure.insufficientPermissions());
       } else if (e.message!.contains("NOT_FOUND")) {

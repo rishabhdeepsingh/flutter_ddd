@@ -5,9 +5,9 @@ import 'package:flutter_ddd/presentation/core/app_widget.dart';
 import 'package:injectable/injectable.dart';
 
 // ignore: avoid_void_async
-void main() async {
-  configureInjection(Environment.prod);
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  configureInjection(Environment.prod);
   await Firebase.initializeApp();
   runApp(AppWidget());
 }
