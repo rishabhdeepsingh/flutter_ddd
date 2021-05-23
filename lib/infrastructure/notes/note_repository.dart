@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_ddd/infrastructure/notes/note_dto.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kt_dart/kt.dart';
