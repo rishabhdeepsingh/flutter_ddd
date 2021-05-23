@@ -77,7 +77,7 @@ class NoteRepository implements INoteRepository {
       await userDoc.noteCollection.doc(noteDto.id).set(noteDto.toJson());
       return right(unit);
     } on FirebaseException catch (e) {
-      if (e.message!.contains("PERMISSION_DENIED")) {
+      if (e.message?.contains("PERMISSION_DENIED") == true) {
         return left(const NoteFailure.insufficientPermissions());
       } else {
         return left(const NoteFailure.unexpected());
