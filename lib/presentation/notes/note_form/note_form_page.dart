@@ -1,6 +1,4 @@
 import 'package:dartz/dartz.dart';
-// ignore: import_of_legacy_library_into_null_safe
-import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_ddd/application/notes/note_form/note_form_bloc.dart';
@@ -31,14 +29,20 @@ class NoteFormPage extends StatelessWidget {
         listener: (context, state) {
           state.saveFailureOrSuccessOption.fold(() {}, (either) {
             either.fold(
-              (failure) => FlushbarHelper.createError(
-                  message: failure.map(
-                insufficientPermissions: (_) => 'Insufficient permissions ❌',
-                unableToUpdate: (_) =>
-                    "Couldn't update the note. Was it deleted from another device?",
-                unexpected: (_) =>
-                    'Unexpected error occured, please contact support.',
-              )).show(context),
+              (failure) {
+                final snackBar = SnackBar(
+                    content: Text(
+                  failure.map(
+                    insufficientPermissions: (_) =>
+                        'Insufficient permissions ❌',
+                    unableToUpdate: (_) =>
+                        "Couldn't update the note. Was it deleted from another device?",
+                    unexpected: (_) =>
+                        'Unexpected error occured, please contact support.',
+                  ),
+                ));
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              },
               (_) => {
                 // why popUntil coz FlushBar is also a route.
                 context.router.popUntil((route) {

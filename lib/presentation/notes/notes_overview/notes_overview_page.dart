@@ -1,6 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-// ignore: import_of_legacy_library_into_null_safe
-import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_ddd/application/auth/auth_bloc.dart';
@@ -37,16 +35,19 @@ class NotesOverviewPage extends StatelessWidget {
               listener: (context, state) {
             state.maybeMap(
                 deleteFailure: (state) {
-                  FlushbarHelper.createError(
-                    message: state.noteFailure.map(
-                      unexpected: (_) =>
-                          "Unexpected error occured while deleting, please contact support.",
-                      insufficientPermissions: (_) =>
-                          "Insufficient permissions ❌",
-                      unableToUpdate: (_) => "Impossible error",
+                  final snackBar = SnackBar(
+                    content: Text(
+                      state.noteFailure.map(
+                        unexpected: (_) =>
+                            "Unexpected error occured while deleting, please contact support.",
+                        insufficientPermissions: (_) =>
+                            "Insufficient permissions ❌",
+                        unableToUpdate: (_) => "Impossible error",
+                      ),
                     ),
                     duration: const Duration(seconds: 5),
-                  ).show(context);
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
                 },
                 orElse: () {});
           })
