@@ -2,12 +2,12 @@ import 'package:flutter/material.dart' hide Router;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_ddd/application/auth/auth_bloc.dart';
 import 'package:flutter_ddd/injection.dart';
-import 'package:flutter_ddd/presentation/routes/router.gr.dart';
+import 'package:flutter_ddd/presentation/routes/router.gr.dart' as app_router;
 
 class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final _appRouter = Router();
+    final _appRouter = app_router.Router();
     return MultiBlocProvider(
       providers: [
         BlocProvider(
