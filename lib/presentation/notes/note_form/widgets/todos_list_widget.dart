@@ -1,5 +1,3 @@
-// ignore: import_of_legacy_library_into_null_safe
-import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_ddd/application/notes/note_form/note_form_bloc.dart';
@@ -21,16 +19,13 @@ class TodoList extends StatelessWidget {
       listenWhen: (p, c) => p.note.todos.isFull != c.note.todos.isFull,
       listener: (context, state) {
         if (state.note.todos.isFull) {
-          FlushbarHelper.createAction(
-              duration: const Duration(seconds: 5),
-              message: "Wants Longer list? Activate premium 🤩",
-              button: FlatButton(
-                onPressed: () {},
-                child: const Text(
-                  "Buy Now",
-                  style: TextStyle(color: Colors.yellow),
-                ),
-              ));
+          final snackbar = SnackBar(
+            duration: const Duration(seconds: 5),
+            content: const Text("Wants Longer list? Activate premium 🤩"),
+            action: SnackBarAction(
+                onPressed: () {}, textColor: Colors.yellow, label: "Buy Now"),
+          );
+          ScaffoldMessenger.of(context).showSnackBar(snackbar);
         }
       },
       child: Consumer<FormTodos>(

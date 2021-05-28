@@ -1,6 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-// ignore: import_of_legacy_library_into_null_safe
-import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_ddd/application/auth/auth_bloc.dart';
@@ -18,14 +16,15 @@ class SignInForm extends StatelessWidget {
           () {},
           (either) => either.fold(
             (failure) {
-              FlushbarHelper.createError(
-                message: failure.map(
+              final snackBar = SnackBar(
+                content: Text(failure.map(
                   cancelledByUser: (_) => "Cancelled",
                   serverError: (_) => "Server Error",
                   emailAlreadyInUse: (_) => "Email Already in Use",
                   invalidEmailPasswordCombination: (_) => "Invalid credentials",
-                ),
-              ).show(context);
+                )),
+              );
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
             },
             (_) {
               context.router.replace(const NotesOverviewPageRoute());
